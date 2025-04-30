@@ -11,14 +11,15 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
+# import dj_database_url
 import environ
-env = environ.Env()
-environ.Env.read_env()
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+environ.Env.read_env()
 # Your secret key
 
 SECRET_KEY=env("SECRET_KEY")
@@ -29,7 +30,7 @@ SECRET_KEY=env("SECRET_KEY")
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-(ooz65en8^z-z^kge*ocxmmg!qz&m^1tu^+2!#b=q%6)!f-z3n'
+# SECRET_KEY = 'django-insecure-(ooz65en8^z-z^kge*ocxmmg!qz&m^1tu^+2!#b=q%6)!f-z3n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -87,19 +88,19 @@ WSGI_APPLICATION = 'bank.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://citibank_user:dHs3aPOS4s2JXOwRPiQCBd4sC7e3fSeg@dpg-crfcb95ds78s73ckibkg-a.oregon-postgres.render.com/citibank',
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Replace this value with your local database's connection string.
+#         default='postgresql://citibank_user:dHs3aPOS4s2JXOwRPiQCBd4sC7e3fSeg@dpg-crfcb95ds78s73ckibkg-a.oregon-postgres.render.com/citibank',
+#         conn_max_age=600
+#     )
+# }
       
 
 # Password validation
